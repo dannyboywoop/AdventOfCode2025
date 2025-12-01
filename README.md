@@ -21,3 +21,4 @@ Some python solutions will import modules from my aoc_tools package, you will ne
 ```pip install aoc-tools-dannyboywoop```
 
 (Or you can install the dependencies with [`uv`](https://docs.astral.sh/uv/)).
+
