@@ -22,3 +22,11 @@ Some python solutions will import modules from my aoc_tools package, you will ne
 
 (Or you can install the dependencies with [`uv`](https://docs.astral.sh/uv/)).
 
+## Setup
+
+* Install [`uv`](https://docs.astral.sh/uv/)
+* Install [`just`](https://just.systems/man/en/) with `cargo install just`
+* Run `just install` to install various package dependencies
+* Run `just check` to run linters
+* Run `just test` to run tests
+* Run `just fmt` to format code
