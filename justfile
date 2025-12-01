@@ -1,11 +1,11 @@
 # This file contains various useful commands to be run via [just](https://just.systems)
 
 check:
-  uv run python -m mypy .
-  uv run python -m ruff check .
+  uv run mypy .
+  uv run ruff check .
 
 fix: fmt
-  uv run python -m ruff check . --fix
+  uv run ruff check . --fix
 
 fmt:
   uv run ruff format . 
@@ -17,6 +17,6 @@ install:
   uv sync
 
 test +args="":
-  uv run python -m pytest . {{args}}
+  uv run pytest . {{args}}
 
 
