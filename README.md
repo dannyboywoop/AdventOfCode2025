@@ -1,4 +1,4 @@
-[AdventOfCode 2025](https://adventofcode.com/2025)
+# [AdventOfCode 2025](https://adventofcode.com/2025)
 AdventOfCode is a yearly event for which a new, two-part, coding challenge is released each day of December until the 25th.
 
 I have struggled to find the time to do the previous two years, and with a busy december ahead I don't expect to get much more time this year.
