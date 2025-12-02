@@ -3,7 +3,16 @@ revision = 3
 requires-python = ">=3.13"
 
 [[package]]
-name = "adventofcode2025"
+name = "aoc-tools-dannyboywoop"
+version = "2.0.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/49/1f/7d994482b250a01a9726ce458865ac3925da1a26a1d110d3282e5335d32a/aoc_tools_dannyboywoop-2.0.0.tar.gz", hash = "sha256:4569d723d4e022a2b973a23bda2f765721525761bd3caab8e17b88ab2f77d122", size = 2352, upload-time = "2025-12-01T17:50:56.605Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/5d/87/c4e82d8068fa21c7e716a6709a443d4ada50ff7e8b94debb0f5ccb4beefa/aoc_tools_dannyboywoop-2.0.0-py3-none-any.whl", hash = "sha256:1fbf0a889a945cca09c9ea3d7858f61c1c7a4168ce1f3739fb9d0debb4fb5d48", size = 3036, upload-time = "2025-12-01T17:50:55.494Z" },
+]
+
+[[package]]
+name = "aoc25"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
@@ -18,22 +27,13 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "aoc-tools-dannyboywoop", specifier = ">=1.2.0" }]
+requires-dist = [{ name = "aoc-tools-dannyboywoop", specifier = ">=2.0.0" }]
 
 [package.metadata.requires-dev]
 dev = [
     { name = "mypy", specifier = ">=1.19.0" },
     { name = "pytest", specifier = ">=9.0.1" },
     { name = "ruff", specifier = ">=0.14.7" },
-]
-
-[[package]]
-name = "aoc-tools-dannyboywoop"
-version = "1.2.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/31/64/64ec1c29632b736cbec89d653b356a2c5cfe4b993a873242d2694a089271/aoc-tools-dannyboywoop-1.2.0.tar.gz", hash = "sha256:6398fd6dcd874131f1d7e894b1a8db0c4598a50982dbcd7fbf8686904f5b97b6", size = 1537, upload-time = "2020-12-18T17:59:09.097Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/95/60/2d3d2a0f1ea2f8122bbd4cf900c1c98cabb738e108cbb58a22f3be1018f5/aoc_tools_dannyboywoop-1.2.0-py3-none-any.whl", hash = "sha256:ab1f2773e4f6bb45cb7c788bbfddbbbce12026b8a935980648a565ad645b6b00", size = 2801, upload-time = "2020-12-18T17:59:07.857Z" },
 ]
 
 [[package]]

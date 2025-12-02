@@ -1,18 +1,18 @@
 [project]
-name = "adventofcode2025"
+name = "aoc25"
 version = "0.1.0"
-description = "Add your description here"
+description = "Solutions to Advent of Code 2025 in Python"
 readme = "README.md"
 authors = [
-    { name = "Daniel Holmes", email = "dan@volantautonomy.com" }
+    { name = "Daniel Holmes", email = "danieljholmes@hotmail.co.uk" }
 ]
 requires-python = ">=3.13"
 dependencies = [
-    "aoc-tools-dannyboywoop>=1.2.0",
+    "aoc-tools-dannyboywoop>=2.0.0",
 ]
 
 [project.scripts]
-adventofcode2025 = "adventofcode2025:main"
+aoc25 = "aoc25:main"
 
 [build-system]
 requires = ["uv_build>=0.8.4,<0.9.0"]

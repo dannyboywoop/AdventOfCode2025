@@ -221,3 +221,5 @@ Cargo.lock
 
 # MSVC Windows builds
 *.pdb
+
+.vscode/

@@ -1,4 +1,5 @@
 # This file contains various useful commands to be run via [just](https://just.systems)
+default: check test
 
 check:
   uv run mypy .
@@ -18,5 +19,8 @@ install:
 
 test +args="":
   uv run pytest . {{args}}
+
+run day:
+  uv run python -m aoc25.day_{{day}}
 
 
