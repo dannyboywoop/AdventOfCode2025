@@ -8,5 +8,9 @@ def get_input_filepath(*, day: int) -> Path:
     return _INPUT_PATH / f"day_{day:02}.txt"
 
 
+def get_input_text(*, day: int) -> str:
+    return get_input_filepath(day=day).read_text().strip()
+
+
 def get_input_lines(*, day: int) -> list[str]:
-    return get_input_filepath(day=day).read_text().strip().split()
+    return get_input_text(day=day).split()
