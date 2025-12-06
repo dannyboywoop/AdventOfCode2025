@@ -2,7 +2,7 @@ from typing import Final
 
 import pytest
 
-from aoc25.day_06 import star_1, star_2
+from aoc25.day_06 import star_1, star_2, parse_problems
 
 _EXAMPLE_INPUT: Final[str] = """
 123 328  51 64 
@@ -14,7 +14,7 @@ _EXAMPLE_INPUT: Final[str] = """
 
 @pytest.fixture
 def sample_data():
-    return _EXAMPLE_INPUT.strip().splitlines()
+    return parse_problems(_EXAMPLE_INPUT.strip().splitlines())
 
 
 def test_star_1(sample_data) -> None:
