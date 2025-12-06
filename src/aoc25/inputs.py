@@ -13,4 +13,4 @@ def get_input_text(*, day: int) -> str:
 
 
 def get_input_lines(*, day: int) -> list[str]:
-    return get_input_text(day=day).split()
+    return get_input_text(day=day).splitlines()

@@ -14,7 +14,7 @@ _EXAMPLE_INPUT: Final[str] = """
 
 @pytest.fixture
 def sample_data():
-    return _EXAMPLE_INPUT.strip().split()
+    return _EXAMPLE_INPUT.strip().splitlines()
 
 
 def test_star_1(sample_data) -> None:
@@ -25,7 +25,7 @@ def test_star_1(sample_data) -> None:
 
 
 def test_star_2(sample_data) -> None:
-    expected = 0 # TODO
+    expected = 3263827
     actual = star_2(sample_data)
 
     assert actual == expected
