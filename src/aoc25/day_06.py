@@ -1,54 +1,65 @@
 from aoc_tools import AdventTimer
 from operator import add, mul
+from collections.abc import Iterable
 
 from aoc25.inputs import get_input_lines
 
 
-def parse_problems(input_lines: list[str]) -> tuple[list[tuple], list[str]]:
-    problems: list[tuple] = list(
+class Problem:
+    def __init__(self, numbers: Iterable[int], operator: str) -> None:
+        self._numbers = numbers
+        self._operator = operator
+
+    def solve_method_1(self) -> int:
+        if self._operator == "+":
+            operation = add
+            result = 0
+        elif self._operator == "*":
+            operation = mul
+            result = 1
+        else:
+            raise ValueError(f"Invalid operator: {self._operator}")
+
+        for number in self._numbers:
+            result = operation(result, number)
+
+        return result
+
+    def solve_method_2(self) -> int:
+        return 0  # TODO
+
+
+def parse_problems(input_lines: list[str]) -> list[Problem]:
+    problem_inputs: list[Iterable[int]] = list(
         zip(*([int(val) for val in line.split()] for line in input_lines[:-1]))
     )
-    symbols: list[str] = [val for val in input_lines[-1].split()]
-    return problems, symbols
+    operators: list[str] = [val for val in input_lines[-1].split()]
+    return [
+        Problem(numbers, operator)
+        for numbers, operator in zip(problem_inputs, operators)
+    ]
 
 
-def star_1(input_lines: list[str]) -> int:
-    grid = list(zip(*([int(val) for val in line.split()] for line in input_lines[:-1])))
-    symbols = [val for val in input_lines[-1].split()]
-    total = 0
-    for i, numbers in enumerate(grid):
-        if symbols[i] == "+":
-            operation = add
-            col_result = 0
-        elif symbols[i] == "*":
-            operation = mul
-            col_result = 1
-        else:
-            raise ValueError(f"Invalid operator: {symbols[i]}")
-
-        for number in numbers:
-            col_result = operation(col_result, number)
-
-        total += col_result
-
-    return total
+def star_1(problems: list[Problem]) -> int:
+    return sum(problem.solve_method_1() for problem in problems)
 
 
-def star_2(input_lines: list[str]) -> int:
-    return 0  # TODO
+def star_2(problems: list[Problem]) -> int:
+    return sum(problem.solve_method_2() for problem in problems)
 
 
 if __name__ == "__main__":
     timer = AdventTimer()
 
     input_lines = get_input_lines(day=6)
+    problems = parse_problems(input_lines)
     print("Input parsed!")
     timer.checkpoint_hit()
 
-    print(f"Star_1: {star_1(input_lines)}")
+    print(f"Star_1: {star_1(problems)}")
     timer.checkpoint_hit()
 
-    print(f"Star_2: {star_2(input_lines)}")
+    print(f"Star_2: {star_2(problems)}")
     timer.checkpoint_hit()
 
     timer.end_hit()
