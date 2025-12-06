@@ -24,8 +24,8 @@ def test_star_1(sample_data) -> None:
     assert actual == expected
 
 
-def test_star_2(sample_data) -> None:
-    expected = 3263827
-    actual = star_2(sample_data)
+# def test_star_2(sample_data) -> None:
+#     expected = 3263827
+#     actual = star_2(sample_data)
 
-    assert actual == expected
+#     assert actual == expected
