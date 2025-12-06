@@ -1,6 +1,7 @@
 from aoc_tools import AdventTimer
 from operator import add, mul
 from collections.abc import Iterable
+from itertools import zip_longest
 
 from aoc25.inputs import get_input_lines
 
@@ -26,7 +27,22 @@ class Problem:
         return result
 
     def solve_method_2(self) -> int:
-        return 0  # TODO
+        if self._operator == "+":
+            operation = add
+            result = 0
+        elif self._operator == "*":
+            operation = mul
+            result = 1
+        else:
+            raise ValueError(f"Invalid operator: {self._operator}")
+
+        actual_numbers_strs = zip_longest(
+            *(str(num) for num in self._numbers), fillvalue="0"
+        )
+        actual_numbers = [int("".join(digits)) for digits in actual_numbers_strs]
+        for number in actual_numbers:
+            result = operation(result, number)
+        return result
 
 
 def parse_problems(input_lines: list[str]) -> list[Problem]:
