@@ -4,24 +4,30 @@ from operator import add, mul
 from aoc25.inputs import get_input_lines
 
 
+def parse_problems(input_lines: list[str]) -> tuple[list[tuple], list[str]]:
+    problems: list[tuple] = list(
+        zip(*([int(val) for val in line.split()] for line in input_lines[:-1]))
+    )
+    symbols: list[str] = [val for val in input_lines[-1].split()]
+    return problems, symbols
+
+
 def star_1(input_lines: list[str]) -> int:
-    grid = [[int(val) for val in line.split()] for line in input_lines[:-1]]
+    grid = list(zip(*([int(val) for val in line.split()] for line in input_lines[:-1])))
     symbols = [val for val in input_lines[-1].split()]
-    num_rows = len(grid)
-    num_cols = len(grid[0])
     total = 0
-    for col in range(num_cols):
-        if symbols[col] == "+":
+    for i, numbers in enumerate(grid):
+        if symbols[i] == "+":
             operation = add
             col_result = 0
-        elif symbols[col] == "*":
+        elif symbols[i] == "*":
             operation = mul
             col_result = 1
         else:
-            raise ValueError(f"Invalid operator: {symbols[col]}")
+            raise ValueError(f"Invalid operator: {symbols[i]}")
 
-        for row in range(num_rows):
-            col_result = operation(col_result, grid[row][col])
+        for number in numbers:
+            col_result = operation(col_result, number)
 
         total += col_result
 
@@ -29,26 +35,7 @@ def star_1(input_lines: list[str]) -> int:
 
 
 def star_2(input_lines: list[str]) -> int:
-    grid = [[int(val) for val in line.split()] for line in input_lines[:-1]]
-    symbols = [val for val in input_lines[-1].split()]
-    num_rows = len(grid)
-    num_cols = len(grid[0])
-    total = 0
-    for col in range(num_cols):
-        if symbols[col] == "+":
-            operation = add
-            col_result = 0
-        elif symbols[col] == "*":
-            operation = mul
-            col_result = 1
-        else:
-            raise ValueError(f"Invalid operator: {symbols[col]}")
-
-        # TODO calculate column result
-
-        total += col_result
-
-    return total
+    return 0  # TODO
 
 
 if __name__ == "__main__":
