@@ -3,12 +3,12 @@ from typing import Final
 import pytest
 
 from aoc25.day_05 import (
-    Ranges,
     Ingredients,
+    Ranges,
+    get_sorted_nonoverlapping_ranges,
     parse_ingredient_database,
     star_1,
     star_2,
-    get_sorted_nonoverlapping_ranges,
 )
 
 _EXAMPLE_INPUT: Final[str] = """
