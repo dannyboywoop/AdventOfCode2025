@@ -9,39 +9,34 @@ from aoc25.inputs import get_input_lines
 class Problem:
     def __init__(self, numbers: Iterable[int], operator: str) -> None:
         self._numbers = numbers
-        self._operator = operator
+        if operator == "+":
+            self._operation = add
+            self._identity = 0
+        elif operator == "*":
+            self._operation = mul
+            self._identity = 1
+        else:
+            raise ValueError(f"Invalid operator: {operator}")
 
     def solve_method_1(self) -> int:
-        if self._operator == "+":
-            operation = add
-            result = 0
-        elif self._operator == "*":
-            operation = mul
-            result = 1
-        else:
-            raise ValueError(f"Invalid operator: {self._operator}")
-
+        result = self._identity
         for number in self._numbers:
-            result = operation(result, number)
+            result = self._operation(result, number)
 
         return result
 
     def solve_method_2(self) -> int:
-        if self._operator == "+":
-            operation = add
-            result = 0
-        elif self._operator == "*":
-            operation = mul
-            result = 1
-        else:
-            raise ValueError(f"Invalid operator: {self._operator}")
+        result = self._identity
 
+        # NOTE: This doesn't work as I didn't realise the alignment varies from question to question
+        # I assumed they were all left alligned (as the first example was)
         actual_numbers_strs = zip_longest(
-            *(str(num) for num in self._numbers), fillvalue="0"
+            *(str(num) for num in self._numbers), fillvalue=str(self._identity)
         )
         actual_numbers = [int("".join(digits)) for digits in actual_numbers_strs]
+
         for number in actual_numbers:
-            result = operation(result, number)
+            result = self._operation(result, number)
         return result
 
 
