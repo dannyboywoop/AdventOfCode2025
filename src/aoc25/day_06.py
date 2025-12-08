@@ -1,7 +1,8 @@
-from aoc_tools import AdventTimer
-from operator import add, mul
 from collections.abc import Iterable
 from itertools import zip_longest
+from operator import add, mul
+
+from aoc_tools import AdventTimer
 
 from aoc25.inputs import get_input_lines
 
@@ -42,12 +43,15 @@ class Problem:
 
 def parse_problems(input_lines: list[str]) -> list[Problem]:
     problem_inputs: list[Iterable[int]] = list(
-        zip(*([int(val) for val in line.split()] for line in input_lines[:-1]))
+        zip(
+            *([int(val) for val in line.split()] for line in input_lines[:-1]),
+            strict=True,
+        )
     )
-    operators: list[str] = [val for val in input_lines[-1].split()]
+    operators: list[str] = input_lines[-1].split()
     return [
         Problem(numbers, operator)
-        for numbers, operator in zip(problem_inputs, operators)
+        for numbers, operator in zip(problem_inputs, operators, strict=True)
     ]
 
 

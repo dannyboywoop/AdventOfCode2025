@@ -2,7 +2,7 @@ from typing import Final
 
 import pytest
 
-from aoc25.day_06 import star_1, star_2, parse_problems
+from aoc25.day_06 import parse_problems, star_1, star_2
 
 _EXAMPLE_INPUT: Final[str] = """
 123 328  51 64 

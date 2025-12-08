@@ -24,6 +24,7 @@ ignore = [
     "PLR2004", # magic numbers -> I'm not going to be strict on this for AoC
     "E501",    # line length -> I let the autoformatter handle this
     "B019",    # not worried about memory leaks from caching in AoC code
+    "W291",    # trailing whitespace can be important with test inputs
 
     # rule sets (too strict or inappropriate for AoC)
     "COM", # https://docs.astral.sh/ruff/rules/#flake8-commas-com (overly pedantic)
