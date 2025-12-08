@@ -23,13 +23,13 @@ def sample_data() -> list[str]:
 
 def test_get_max_joltage_2_batteries(sample_data: list[str]) -> None:
     expected_joltages = [98, 89, 78, 92]
-    for bank, expected_joltage in zip(sample_data, expected_joltages):
+    for bank, expected_joltage in zip(sample_data, expected_joltages, strict=True):
         assert get_max_joltage(bank) == expected_joltage
 
 
 def test_get_max_joltage_12_batteries(sample_data: list[str]) -> None:
     expected_joltages = [987654321111, 811111111119, 434234234278, 888911112111]
-    for bank, expected_joltage in zip(sample_data, expected_joltages):
+    for bank, expected_joltage in zip(sample_data, expected_joltages, strict=True):
         assert get_max_joltage(bank, battery_count=12) == expected_joltage
 
 

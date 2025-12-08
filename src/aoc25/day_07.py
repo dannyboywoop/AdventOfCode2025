@@ -21,7 +21,7 @@ def parse_input(input_lines: list[str]) -> tuple[int, tuple[set[int], ...]]:
 
 def star_1(puzzle_input: tuple[int, tuple[set[int], ...]]) -> int:
     start_position, splitter_layers = puzzle_input
-    beam_positions: set[int] = set([start_position])
+    beam_positions: set[int] = {start_position}
     split_count = 0
 
     for splitter_positions in splitter_layers:

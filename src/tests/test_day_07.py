@@ -34,14 +34,14 @@ def sample_data():
 
 
 def test_star_1(sample_data) -> None:
-    expected = 21  # TODO
+    expected = 21
     actual = star_1(sample_data)
 
     assert actual == expected
 
 
 def test_star_2(sample_data) -> None:
-    expected = 40  # TODO
+    expected = 40
     actual = star_2(sample_data)
 
     assert actual == expected

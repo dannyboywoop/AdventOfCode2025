@@ -12,8 +12,8 @@ class Range:
     upper: int
 
 
-def parse_input(input: str) -> list[Range]:
-    pair_strings: list[str] = input.split(",")
+def parse_input(input_text: str) -> list[Range]:
+    pair_strings: list[str] = input_text.split(",")
     ranges: list[Range] = []
     for pair_str in pair_strings:
         lower, upper = pair_str.split("-")
@@ -22,7 +22,9 @@ def parse_input(input: str) -> list[Range]:
     return ranges
 
 
-def get_numbers_with_repetitions(num_range: Range, repetitions=2) -> Iterator[int]:
+def get_numbers_with_repetitions(
+    num_range: Range, repetitions: int = 2
+) -> Iterator[int]:
     lower_str = str(num_range.lower)
     digits = len(lower_str)
     repetition_size, remainder = divmod(digits, repetitions)

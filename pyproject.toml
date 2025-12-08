@@ -3,13 +3,9 @@ name = "aoc25"
 version = "0.1.0"
 description = "Solutions to Advent of Code 2025 in Python"
 readme = "README.md"
-authors = [
-    { name = "Daniel Holmes", email = "danieljholmes@hotmail.co.uk" }
-]
+authors = [{ name = "Daniel Holmes", email = "danieljholmes@hotmail.co.uk" }]
 requires-python = ">=3.13"
-dependencies = [
-    "aoc-tools-dannyboywoop>=2.0.0",
-]
+dependencies = ["aoc-tools-dannyboywoop>=2.0.0"]
 
 [project.scripts]
 aoc25 = "aoc25:main"
@@ -19,11 +15,34 @@ requires = ["uv_build>=0.8.4,<0.9.0"]
 build-backend = "uv_build"
 
 [dependency-groups]
-dev = [
-    "mypy>=1.19.0",
-    "pytest>=9.0.1",
-    "ruff>=0.14.7",
-]
+dev = ["mypy>=1.19.0", "pytest>=9.0.1", "ruff>=0.14.7"]
 
 [tool.ruff.lint]
-extend-select = ["I"]
+select = ["ALL"]
+ignore = [
+    # specific rules
+    "PLR2004", # magic numbers -> I'm not going to be strict on this for AoC
+    "E501",    # line length -> I let the autoformatter handle this
+    "B019",    # not worried about memory leaks from caching in AoC code
+
+    # rule sets (too strict or inappropriate for AoC)
+    "COM", # https://docs.astral.sh/ruff/rules/#flake8-commas-com (overly pedantic)
+    "CPY", # https://docs.astral.sh/ruff/rules/#flake8-copyright-cpy (not writing copyright headers for AoC)
+    "FIX", # https://docs.astral.sh/ruff/rules/#flake8-fixme-fix (using TODOs to mark future work)
+    "TC",  # https://docs.astral.sh/ruff/rules/#flake8-type-checking-tc (overly tedious)
+    "DOC", # https://docs.astral.sh/ruff/rules/#pydoclint-doc (overly tedious)
+    "TD",  # https://docs.astral.sh/ruff/rules/#flake8-todos-td (not creating tickets for TODOs)
+    "D",   # https://docs.astral.sh/ruff/rules/#pydocstyle-d (not enforcing docstrings)
+    "T20", # https://docs.astral.sh/ruff/rules/#flake8-print-t20 (prints are fine for AoC)
+    "TRY", # https://docs.astral.sh/ruff/rules/#tryceratops-try (too fussy for AoC)
+    "EM",  # https://docs.astral.sh/ruff/rules/#flake8-errmsg-em (too fussy for AoC)
+
+]
+
+[tool.ruff.lint.extend-per-file-ignores]
+"src/tests/**" = [
+    "S101",   # use of `assert` in tests is acceptable
+    "SLF001", # use of private members ok in tests
+    "ANN001", # Not typing test functions can be useful for TDD purposes
+    "ANN201", # Not typing test functions can be useful for TDD purposes
+]

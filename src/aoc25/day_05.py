@@ -1,4 +1,4 @@
-from typing import NamedTuple, TypeAlias
+from typing import NamedTuple
 
 from aoc_tools import AdventTimer
 
@@ -19,8 +19,8 @@ class Range(NamedTuple):
         return self.upper - self.lower + 1
 
 
-Ranges: TypeAlias = list[Range]
-Ingredients: TypeAlias = list[int]
+type Ranges = list[Range]
+type Ingredients = list[int]
 
 
 def parse_ingredient_database(input_text: str) -> tuple[Ranges, Ingredients]:

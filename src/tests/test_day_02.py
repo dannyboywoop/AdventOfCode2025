@@ -38,7 +38,7 @@ def test_get_numbers_with_repetitions_2_repetitions(sample_data: list[Range]) ->
     ]
 
     for num_range, expected_ids in zip(sample_data, expected_outputs, strict=True):
-        assert list(sorted(get_numbers_with_repetitions(num_range, 2))) == expected_ids
+        assert sorted(get_numbers_with_repetitions(num_range, 2)) == expected_ids
 
 
 def test_get_numbers_with_repetitions_3_repetitions() -> None:
@@ -64,7 +64,7 @@ def test_get_all_invalid_numbers(sample_data: list[Range]) -> None:
         [2121212121],
     ]
     for num_range, expected_ids in zip(sample_data, expected_outputs, strict=True):
-        assert list(sorted(get_invalid_ids(num_range))) == expected_ids
+        assert sorted(get_invalid_ids(num_range)) == expected_ids
 
 
 def test_star_1(sample_data: list[Range]) -> None:
