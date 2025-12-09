@@ -1,26 +1,11 @@
 from collections.abc import Iterable, Sequence
-from typing import NamedTuple
 
 from aoc_tools import AdventTimer
 
-from aoc25.common import UniqueIdContainer, product
+from aoc25.common import Pair, Position3D, UniqueIdContainer, product
 from aoc25.inputs import get_input_lines
 
-
-class Position3D(NamedTuple):
-    x: int
-    y: int
-    z: int
-
-    def distance2(self, other: "Position3D") -> float:
-        """Return the square of the euclidean distance to another position."""
-        return (
-            (self.x - other.x) ** 2 + (self.y - other.y) ** 2 + (self.z - other.z) ** 2
-        )
-
-
 type Positions = list[Position3D]
-type Pair[T] = tuple[T, T]
 
 
 def parse_input(input_lines: list[str]) -> list[Position3D]:

@@ -1,6 +1,7 @@
+from collections import namedtuple
 from collections.abc import ItemsView, Iterable, ValuesView
 from functools import reduce
-from operator import mul
+from operator import add, mul, sub
 from typing import Protocol, Self
 
 
@@ -10,6 +11,32 @@ class SupportsMul(Protocol):
 
 def product[T: SupportsMul](iterable: Iterable[T]) -> T:
     return reduce(mul, iterable)
+
+
+class Position:
+    def distance2(self, other: Self) -> float:
+        return sum((c1 - c2) ** 2 for c1, c2 in zip(self, other, strict=True))
+
+    def __add__(self, other: object) -> Self:
+        if not isinstance(other, type(self)):
+            raise NotImplementedError
+        return type(self)(*map(add, self, other))
+
+    def __sub__(self, other: object) -> Self:
+        if not isinstance(other, type(self)):
+            raise NotImplementedError
+        return type(self)(*map(sub, self, other))
+
+
+class Position2D(Position, namedtuple("Position2D", ["x", "y"])):  # noqa: PYI024
+    __slots__ = ()
+
+
+class Position3D(Position, namedtuple("Position3D", ["x", "y", "z"])):  # noqa: PYI024
+    __slots__ = ()
+
+
+type Pair[T] = tuple[T, T]
 
 
 class UniqueIdContainer[V]:
